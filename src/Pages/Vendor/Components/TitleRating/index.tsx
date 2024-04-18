@@ -1,24 +1,33 @@
 import { useAppDispatch, useAppSelector } from "Hooks/redux";
 import styles from "./styles.module.scss";
+interface TitleRatingProps {
+  title: string;
+  rate: number;
+  voteCount: number;
+}
 
-const TitleRating = () => {
+const TitleRating: React.FC<TitleRatingProps> = ({
+  title,
+  rate,
+  voteCount,
+}) => {
   return (
     <div className={styles.title_rating}>
-      <h2>Del piano</h2>;
-      <Rate />
+      <h2>{title}</h2>
+      {Rate(rate, voteCount)}
     </div>
   );
 };
 
 export default TitleRating;
 
-const Rate = () => {
+const Rate = (rate: number, voteCount: number) => {
   return (
     <div className={styles.rate}>
       <div className={styles.rate__star}>
-        <p>4.5</p>
+        <p>{rate.toLocaleString()}</p>
       </div>
-      <p>(1493)</p>
+      <p>{voteCount.toLocaleString()}</p>
     </div>
   );
 };

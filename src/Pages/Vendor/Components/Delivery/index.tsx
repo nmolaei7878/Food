@@ -1,30 +1,40 @@
 import styles from "./styles.module.scss";
 
-const Delivery = () => {
+interface DeliveryProps {
+  deliveryPrice: number;
+  deliveryTime: number;
+  deliveryType: string;
+}
+
+const Delivery: React.FC<DeliveryProps> = ({
+  deliveryPrice,
+  deliveryTime,
+  deliveryType,
+}) => {
   return (
     <div className={styles.delivery}>
-      <DeliveryPrice />
-      <DeliveryTime />
+      {DeliveryPrice(deliveryPrice, deliveryType)}
+      {DeliveryTime(deliveryTime)}
     </div>
   );
 };
 
 export default Delivery;
 
-const DeliveryTime = () => {
+const DeliveryTime = (deliveryTime: number) => {
   return (
     <div className={styles.delivery_time}>
-      <p>icon</p>
-      <p>9500 toman</p>
+      <p>ico</p>
+      <p>{deliveryTime.toLocaleString()}</p>
     </div>
   );
 };
 
-const DeliveryPrice = () => {
+const DeliveryPrice = (deliveryPrice: number, deliveryType: string) => {
   return (
     <div className={styles.delivery_price}>
-      <p>express</p>
-      <p>9500 toman</p>
+      <p>{deliveryType}</p>
+      <p>{deliveryPrice.toLocaleString()} toman</p>
     </div>
   );
 };

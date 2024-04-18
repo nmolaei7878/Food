@@ -1,14 +1,12 @@
 import styles from "./styles.module.scss";
+interface LogoProps {
+  logo: string;
+}
 
-const Logo = () => {
+const Logo: React.FC<LogoProps> = ({ logo }) => {
   return (
     <div className={styles.logo}>
-      <img
-        className={styles.logo_image}
-        height={80}
-        width={80}
-        src="https://images.freeimages.com/images/large-previews/56d/peacock-1169961.jpg"
-      />
+      <img className={styles.logo_image} height={80} width={80} src={logo} />
     </div>
   );
 };
