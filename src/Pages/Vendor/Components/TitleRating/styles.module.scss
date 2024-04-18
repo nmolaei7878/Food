@@ -1,0 +1,17 @@
+@import "Styles/flexbox.scss";
+
+.title_rating {
+  @include rowflexspace();
+}
+
+.rate {
+  @include flexbox;
+  @include flex-direction(row);
+  gap: 10px;
+
+  &__star {
+    @include flexbox;
+    @include flex-direction(row);
+    gap: 3px;
+  }
+}

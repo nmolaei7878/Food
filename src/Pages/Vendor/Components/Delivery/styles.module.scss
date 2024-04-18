@@ -1,0 +1,12 @@
+@import "Styles/flexbox.scss";
+
+.delivery {
+  @include rowflexspace;
+
+  &_time {
+    @include flexcenter;
+  }
+  &_price {
+    @include flexcenter;
+  }
+}
