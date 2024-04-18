@@ -43,12 +43,6 @@ module.exports = {
           loader: "babel-loader",
         },
       },
-
-      {
-        test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
-        exclude: /node_modules/,
-        use: ["file-loader?name=[name].[ext]"],
-      },
       {
         test: /\.(scss|css)$/,
         use: ["style-loader", "css-loader", "sass-loader"],
