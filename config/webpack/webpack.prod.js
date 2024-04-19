@@ -9,7 +9,7 @@ const { PATHS } = require("../paths.js");
 
 module.exports = merge(common, {
   mode: "production",
-  devtool: "source-map",
+  devtool: false,
 
   output: {
     path: path.resolve(PATHS.BUILD_DIR),
