@@ -19,7 +19,8 @@
       "Router/*": ["./src/Router/*"],
       "Redux/*": ["./src/Redux/*"],
       "Types/*": ["./src/Types/*"],
-      "Styles/*": ["./src/Styles/*"]
+      "Styles/*": ["./src/Styles/*"],
+      "Utils/*": ["./src/Utils/*"]
     }
   },
   "include": ["src/**/*"],
