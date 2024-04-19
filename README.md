@@ -1,4 +1,4 @@
-# [Live Demo]([https://food-mu-drab.vercel.app/vendor](https://food-1pg78qklf-mmolaei7878s-projects.vercel.app/vendor))
+# [Live Demo]([https://food-mu-drab.vercel.app/vendor](https://food-1pg78qklf-mmolaei7878s-projects.vercel.app/vendor)
 
 # **Webpack Configuraion**
 
