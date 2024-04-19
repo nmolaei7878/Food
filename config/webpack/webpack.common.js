@@ -2,6 +2,8 @@ const path = require("path");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { PATHS } = require("../paths");
+const webpack = require("webpack");
+const Dotenv = require("dotenv-webpack");
 
 module.exports = {
   entry: path.join(PATHS.APP_DIR, "index.tsx"),
@@ -24,6 +26,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./public/index.html",
       filename: "index.html",
+    }),
+    new Dotenv({
+      path: `${PATHS.ROOT_DIR}/.env`,
+    }),
+    new webpack.DefinePlugin({
+      NODE_ENV: JSON.stringify("development"),
     }),
   ],
 
