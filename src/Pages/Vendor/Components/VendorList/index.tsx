@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useAppDispatch, useAppSelector } from "Hooks/redux";
-import { getVendor } from "Redux/slices/VendorSlice";
+import { getVendor } from "Redux/slices/Vendor/VendorThunks";
 import VirtualList from "Components/Shared/VirtualList";
 import Card from "../Card";
 
