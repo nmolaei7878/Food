@@ -3,17 +3,17 @@ import styles from "./styles.module.scss";
 interface DeliveryProps {
   deliveryPrice?: number;
   deliveryTime?: number;
-  deliveryType?: string;
+  isExpressDeliver?: boolean;
 }
 
 const Delivery: React.FC<DeliveryProps> = ({
   deliveryPrice,
   deliveryTime,
-  deliveryType,
+  isExpressDeliver,
 }) => {
   return (
     <div className={styles.delivery}>
-      {DeliveryPrice(deliveryPrice || 0, deliveryType || "")}
+      {DeliveryPrice(deliveryPrice || 0, isExpressDeliver || false)}
       {DeliveryTime(deliveryTime || 0)}
     </div>
   );
@@ -30,11 +30,16 @@ const DeliveryTime = (deliveryTime: number) => {
   );
 };
 
-const DeliveryPrice = (deliveryPrice: number, deliveryType: string) => {
+const DeliveryPrice = (deliveryPrice: number, isExpressDeliver: boolean) => {
+  let delivery = "ارسال اکسپرس";
+  if (isExpressDeliver === false) {
+    delivery = "پیک فروشنده";
+  }
+
   return (
     <div className={styles.delivery_price}>
-      <p>{deliveryType}</p>
-      <p>{deliveryPrice.toLocaleString()} toman</p>
+      <p>{delivery}</p>
+      <p>{deliveryPrice.toLocaleString()} تومن</p>
     </div>
   );
 };

@@ -24,10 +24,10 @@ export default TitleRating;
 const Rate = (rate: number, voteCount: number) => {
   return (
     <div className={styles.rate}>
+      <p>({voteCount?.toLocaleString()})</p>
       <div className={styles.rate__star}>
         <p>{rate?.toLocaleString()}</p>
       </div>
-      <p>{voteCount?.toLocaleString()}</p>
     </div>
   );
 };

@@ -5,8 +5,11 @@
 
   &_time {
     @include flexcenter;
+    gap: 5px;
   }
   &_price {
+    gap: 5px;
+
     @include flexcenter;
   }
 }

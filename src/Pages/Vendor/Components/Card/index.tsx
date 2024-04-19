@@ -25,11 +25,13 @@ const Card: React.FC<CardProps> = ({ vendorData }) => {
           voteCount={vendor?.voteCount}
           title={vendor?.title}
         />
-        <h4>{vendor?.description}</h4>
+        <h5 className={styles.card_information_description}>
+          {vendor?.description}
+        </h5>
         <Delivery
           deliveryPrice={vendor?.deliveryFee}
           deliveryTime={vendor?.deliveryTime}
-          deliveryType={vendor?.budgetClass}
+          isExpressDeliver={vendor?.isZFExpress}
         />
       </div>
     </div>

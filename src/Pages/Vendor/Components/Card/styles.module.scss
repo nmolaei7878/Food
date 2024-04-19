@@ -6,8 +6,9 @@
   background-color: white;
   border-radius: 16px;
   position: relative;
-  box-shadow: 3px rgb(98, 99, 99);
+  box-shadow: 51px rgb(61, 62, 62);
   margin: 16px;
+
   &_image {
     border-radius: 16px 16px 0 0;
   }
@@ -18,5 +19,11 @@
     @include flexbox;
     @include flex-direction(column);
     justify-content: space-evenly;
+
+    &_description {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
   }
 }
