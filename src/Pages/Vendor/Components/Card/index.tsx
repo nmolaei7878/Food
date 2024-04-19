@@ -9,27 +9,27 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({ vendorData }) => {
-  const vendor = vendorData.data;
+  const vendor = vendorData?.data;
   return (
     <div className={styles.card}>
       <img
         className={styles.card_image}
         height={175}
         width="100%"
-        src={vendor.backgroundImage}
+        src={vendor?.backgroundImage}
       />
       <div className={styles.card_information}>
-        <Logo logo={vendor.logo} />
+        <Logo logo={vendor?.logo} />
         <TitleRating
-          rate={vendor.rate}
-          voteCount={vendor.voteCount}
-          title={vendor.title}
+          rate={vendor?.rate}
+          voteCount={vendor?.voteCount}
+          title={vendor?.title}
         />
-        <h4>{vendor.description}</h4>
+        <h4>{vendor?.description}</h4>
         <Delivery
-          deliveryPrice={vendor.deliveryFee}
-          deliveryTime={vendor.deliveryTime}
-          deliveryType={vendor.budgetClass}
+          deliveryPrice={vendor?.deliveryFee}
+          deliveryTime={vendor?.deliveryTime}
+          deliveryType={vendor?.budgetClass}
         />
       </div>
     </div>

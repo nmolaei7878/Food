@@ -3,16 +3,12 @@ import { Vendor } from "Types/Vendors";
 import axios from "axios";
 
 type InitialState = {
-  status: "idle" | "loading" | "succeeded" | "failed";
-  error: undefined | string;
-  hasMore: boolean;
+  loading: boolean;
   vendors: Array<Vendor>;
 };
 
 const initialState: InitialState = {
-  status: "idle",
-  error: undefined,
-  hasMore: true,
+  loading: false,
   vendors: [],
 };
 
@@ -21,23 +17,21 @@ const VendorSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder
-      .addCase(vendorNextPage.pending, (state) => {
-        state.status = "loading";
-      })
-      .addCase(vendorNextPage.fulfilled, (state, action) => {
-        state.status = "succeeded";
-        state.vendors = state.vendors.concat(action.payload.finalResult);
-        state.hasMore = action.payload.length > action.payload.count;
-      })
-      .addCase(vendorNextPage.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.error.message;
-      });
+    builder.addCase(vendorNextPage.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(vendorNextPage.fulfilled, (state, action) => {
+      state.loading = false;
+      state.vendors = action.payload;
+    });
+    builder.addCase(vendorNextPage.rejected, (state, action) => {
+      state.loading = false;
+    });
   },
 });
 
 export default VendorSlice.reducer;
+
 export interface FetchDataParams {
   page: number;
   page_size: number;

@@ -3,6 +3,7 @@ import styles from "./styles.module.scss";
 import Card from "./Components/Card";
 import { useEffect } from "react";
 import { FetchDataParams, vendorNextPage } from "Redux/slices/VendorSlice";
+import DataList from "./Components/VirtualList";
 
 const Vendor = () => {
   const dispatch = useAppDispatch();
@@ -13,23 +14,10 @@ const Vendor = () => {
     page_size: 10,
   };
   useEffect(() => {
-    dispatch(vendorNextPage(fetchParams));
+    // dispatch(vendorNextPage(fetchParams));
   }, []);
 
-  return (
-    <div className={styles.vendor}>
-      {vendor.vendors.map((vendor, i) => {
-        if (vendor.type === "TEXT") {
-          return;
-        }
-        return (
-          <div key={vendor.data.id}>
-            <Card vendorData={vendor} />
-          </div>
-        );
-      })}
-    </div>
-  );
+  return <DataList />;
 };
 
 export default Vendor;

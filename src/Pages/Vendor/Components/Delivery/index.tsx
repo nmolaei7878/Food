@@ -1,9 +1,9 @@
 import styles from "./styles.module.scss";
 
 interface DeliveryProps {
-  deliveryPrice: number;
-  deliveryTime: number;
-  deliveryType: string;
+  deliveryPrice?: number;
+  deliveryTime?: number;
+  deliveryType?: string;
 }
 
 const Delivery: React.FC<DeliveryProps> = ({
@@ -13,8 +13,8 @@ const Delivery: React.FC<DeliveryProps> = ({
 }) => {
   return (
     <div className={styles.delivery}>
-      {DeliveryPrice(deliveryPrice, deliveryType)}
-      {DeliveryTime(deliveryTime)}
+      {DeliveryPrice(deliveryPrice || 0, deliveryType || "")}
+      {DeliveryTime(deliveryTime || 0)}
     </div>
   );
 };
@@ -25,7 +25,7 @@ const DeliveryTime = (deliveryTime: number) => {
   return (
     <div className={styles.delivery_time}>
       <p>ico</p>
-      <p>{deliveryTime.toLocaleString()}</p>
+      <p>{deliveryTime?.toLocaleString()}</p>
     </div>
   );
 };

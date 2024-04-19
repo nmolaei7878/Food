@@ -1,0 +1,10 @@
+@import "Styles/flexbox.scss";
+
+.home {
+  @include flexbox;
+  @include flex-direction(column);
+  gap: 10px;
+  height: 100%;
+  width: 100%;
+  padding: 16px;
+}

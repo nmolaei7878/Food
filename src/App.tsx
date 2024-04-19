@@ -1,16 +1,16 @@
 import BaseLayout from "Components/Layout/BaseLayout";
-import React from "react";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "Styles/main.scss";
 
-const Vendor = React.lazy(() => import("Pages/Vendor"));
+import Vendor from "Pages/Vendor";
+import Home from "Pages/Home";
 
 function App() {
   return (
     <BaseLayout>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Navigate replace to={"/vendor"} />} />
+          <Route path="/" element={<Home />} />
           <Route path="/vendor" element={<Vendor />} />
         </Routes>
       </BrowserRouter>

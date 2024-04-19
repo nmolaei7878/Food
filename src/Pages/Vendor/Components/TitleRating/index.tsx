@@ -1,9 +1,9 @@
 import { useAppDispatch, useAppSelector } from "Hooks/redux";
 import styles from "./styles.module.scss";
 interface TitleRatingProps {
-  title: string;
-  rate: number;
-  voteCount: number;
+  title?: string;
+  rate?: number;
+  voteCount?: number;
 }
 
 const TitleRating: React.FC<TitleRatingProps> = ({
@@ -14,7 +14,7 @@ const TitleRating: React.FC<TitleRatingProps> = ({
   return (
     <div className={styles.title_rating}>
       <h2>{title}</h2>
-      {Rate(rate, voteCount)}
+      {Rate(rate || 0, voteCount || 0)}
     </div>
   );
 };
@@ -25,9 +25,9 @@ const Rate = (rate: number, voteCount: number) => {
   return (
     <div className={styles.rate}>
       <div className={styles.rate__star}>
-        <p>{rate.toLocaleString()}</p>
+        <p>{rate?.toLocaleString()}</p>
       </div>
-      <p>{voteCount.toLocaleString()}</p>
+      <p>{voteCount?.toLocaleString()}</p>
     </div>
   );
 };
