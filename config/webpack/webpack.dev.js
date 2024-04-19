@@ -22,6 +22,4 @@ module.exports = merge(common, {
       writeToDisk: true,
     },
   },
-
-  plugins: [new FriendlyErrorsPlugin()],
 });
