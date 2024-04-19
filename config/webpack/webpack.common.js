@@ -23,6 +23,7 @@ module.exports = {
     new ForkTsCheckerWebpackPlugin({
       async: false,
     }),
+
     new HtmlWebpackPlugin({
       template: "./public/index.html",
       filename: "index.html",

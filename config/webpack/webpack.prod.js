@@ -4,25 +4,20 @@ const path = require("path");
 const TerserPlugin = require("terser-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
 const zlib = require("zlib");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const { PATHS } = require("../paths.js");
 
 module.exports = merge(common, {
   mode: "production",
-  devtool: false,
+  devtool: "source-map",
 
   output: {
     path: path.resolve(PATHS.BUILD_DIR),
     publicPath: "/",
     filename: "js/[name].[contenthash].bundle.js",
   },
-  target: ["web", "es5"],
+
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: "styles/[name].[contenthash].css",
-      chunkFilename: "[id].css",
-    }),
     new CompressionPlugin({
       algorithm: "brotliCompress",
       compressionOptions: {
@@ -36,33 +31,36 @@ module.exports = merge(common, {
     minimize: true,
     minimizer: [
       new CssMinimizerPlugin(),
-      new TerserPlugin({ parallel: 8, extractComments: false }),
+      new TerserPlugin({ parallel: 8, extractComments: true }),
     ],
+    splitChunks: {
+      chunks: "all",
+      minSize: 20000,
+      maxSize: 51200,
+      minChunks: 1,
+      maxAsyncRequests: 6,
+      maxInitialRequests: 4,
+      automaticNameDelimiter: "~",
+      cacheGroups: {
+        defaultVendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+          reuseExistingChunk: true,
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true,
+        },
+      },
+    },
     runtimeChunk: {
       name: "runtime",
     },
   },
   performance: {
-    hints: false,
+    hints: "warning",
     maxEntrypointSize: 512000,
     maxAssetSize: 512000,
-  },
-  module: {
-    rules: [
-      {
-        test: /\.(scss|css)$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: "css-loader",
-            options: {
-              importLoaders: 2,
-              sourceMap: false,
-            },
-          },
-          "sass-loader",
-        ],
-      },
-    ],
   },
 });
