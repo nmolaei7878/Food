@@ -16,7 +16,7 @@ export type VendorPick = Pick<
   | "title"
   | "deliveryFee"
   | "deliveryTime"
-  | "budgetClass"
+  | "isZFExpress"
 >;
 
 type Data = {
