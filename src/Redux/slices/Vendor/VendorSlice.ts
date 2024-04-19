@@ -1,5 +1,6 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { Vendor } from "Types/Vendors";
+import { getVendor } from "./VendorThunks";
 
 type InitialState = {
   currentPage: number;
@@ -38,23 +39,3 @@ const VendorSlice = createSlice({
 });
 
 export default VendorSlice.reducer;
-
-export const getVendor = createAsyncThunk(
-  "vendor/getVendor",
-  async (page: number) => {
-    try {
-      const data = {
-        lat: "35.753",
-        long: "51.328",
-      };
-      const response = await fetch(
-        `https://snappfood.ir/mobile/v3/restaurant/vendors-list?page=${page}&page_size=10&lat=${data.lat}&long=${data.long}`
-      );
-      const newData = await response.json();
-
-      return newData.data.finalResult;
-    } catch (error) {
-      throw new Error("Failed to fetch data");
-    }
-  }
-);
