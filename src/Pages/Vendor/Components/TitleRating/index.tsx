@@ -13,7 +13,7 @@ const TitleRating: React.FC<TitleRatingProps> = ({
 }) => {
   return (
     <div className={styles.title_rating}>
-      <h2>{title}</h2>
+      <h3>{title}</h3>
       {Rate(rate || 0, voteCount || 0)}
     </div>
   );

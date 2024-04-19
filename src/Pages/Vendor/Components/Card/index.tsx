@@ -30,7 +30,6 @@ const Card: React.FC<CardProps> = ({ vendorData }) => {
         </h5>
         <Delivery
           deliveryPrice={vendor?.deliveryFee}
-          deliveryTime={vendor?.deliveryTime}
           isExpressDeliver={vendor?.isZFExpress}
         />
       </div>
