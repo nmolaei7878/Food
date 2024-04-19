@@ -3,7 +3,10 @@
   margin: 0;
   box-sizing: border-box;
 }
-
+@font-face {
+  font-family: homa;
+  src: url(http://alimd.github.io/libs/1fonts/1.4/1fonts.css);
+}
 html {
   font-family: homa;
   font-size: 16px;
