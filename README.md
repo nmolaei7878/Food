@@ -1,4 +1,14 @@
-# [Live Demo on vercel (please use a vpn)](https://food-mu-drab.vercel.app/vendor)
+# [Live Demo on Vercel (please use a vpn)](https://food-mu-drab.vercel.app/vendor)
+
+# Requirement
+  - node version 20
+
+# Install & Running
+
+- > `npm install`
+- > `npm run build`
+- > `npm run start`
+
 
 # **Webpack Configuraion**
 
