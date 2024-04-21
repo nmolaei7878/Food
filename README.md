@@ -1,4 +1,4 @@
-# [Live Demo on vercel (please use a vpn](https://food-mu-drab.vercel.app/vendor)
+# [Live Demo on vercel (please use a vpn)](https://food-mu-drab.vercel.app/vendor)
 
 # **Webpack Configuraion**
 
