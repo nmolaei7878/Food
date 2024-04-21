@@ -13,7 +13,6 @@
 # **Webpack Configuraion**
 
 - Bundle `TypeScript` and `JavaScript` files using `Babel`.
-- Runtime type checking in a separate process using `ForkTsCheckerWebpackPlugin`.
 - Generate an `HTML` file based on a template using `HtmlWebpackPlugin`.
 - Load environment variables from a `.env `file using `Dotenv`.
   - In `production` mode:
