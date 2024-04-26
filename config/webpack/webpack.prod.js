@@ -4,17 +4,24 @@ const path = require("path");
 const TerserPlugin = require("terser-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const { PATHS } = require("../paths.js");
+const { InjectManifest } = require("workbox-webpack-plugin");
 
 module.exports = merge(common, {
   mode: "production",
   devtool: false,
-
   output: {
     path: path.resolve(PATHS.BUILD_DIR),
     publicPath: "/",
     filename: "js/[name].[contenthash].bundle.js",
   },
-
+  plugins: [
+    new InjectManifest({
+      swSrc: "./src/src-sw.js",
+      swDest: "sw.js",
+      mode: "production",
+      maximumFileSizeToCacheInBytes: 10000,
+    }),
+  ],
   optimization: {
     minimize: true,
     minimizer: [
