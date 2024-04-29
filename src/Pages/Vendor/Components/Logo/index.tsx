@@ -6,7 +6,7 @@ interface LogoProps {
 const Logo: React.FC<LogoProps> = ({ logo }) => {
   return (
     <div className={styles.logo}>
-      <img className={styles.logo_image} height={30} width={30} src={logo} />
+      <img className={styles.logo_image} height={80} width={80} src={logo} />
     </div>
   );
 };
