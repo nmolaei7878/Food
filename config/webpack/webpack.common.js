@@ -5,10 +5,12 @@ const { PATHS } = require("../paths");
 const webpack = require("webpack");
 const Dotenv = require("dotenv-webpack");
 const WebpackPwaManifest = require("webpack-pwa-manifest");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   entry: path.join(PATHS.APP_DIR, "index.tsx"),
-
+  
   output: {
     path: path.join(PATHS.OUTPUT_DIR),
     filename: "[name].bundle.js",
@@ -20,10 +22,15 @@ module.exports = {
   },
 
   plugins: [
+    new CleanWebpackPlugin(),
+
     new ForkTsCheckerWebpackPlugin({
       async: false,
     }),
-
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+      chunkFilename: "[name].css"
+    }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
       favicon: "./public/favicon.png",
@@ -54,7 +61,16 @@ module.exports = {
       ],
     }),
   ],
-
+    stats: {
+    colors: true, 
+    entrypoints: true, 
+    modules: false,
+    chunks: true, 
+    chunkGroups: false, 
+    chunkModules: false,
+    chunkOrigins: false, 
+    children: false,
+  },
   module: {
     rules: [
       {
@@ -73,7 +89,7 @@ module.exports = {
       },
       {
         test: /\.(scss|css)$/,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        use: [MiniCssExtractPlugin.loader, "css-loader","postcss-loader", "sass-loader"],
       },
       {
         test: /\.(png|jpe?g|gif|ico|json)$/i,
@@ -82,4 +98,4 @@ module.exports = {
       },
     ],
   },
-};
+}
