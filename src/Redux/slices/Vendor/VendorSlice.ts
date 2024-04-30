@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Vendor } from "Types/Vendors";
 import { getVendor } from "./VendorThunks";
 
@@ -26,13 +26,13 @@ const VendorSlice = createSlice({
       .addCase(getVendor.fulfilled, (state, action) => {
         state.loading = false;
         if (state.currentPage === 0) {
-          state.vendors = action.payload.slice(1);
+          state.vendors = action.payload?.slice(1);
         } else {
-          state.vendors = state.vendors.concat(action.payload);
+          state.vendors = state.vendors?.concat(action.payload);
         }
         state.currentPage++;
       })
-      .addCase(getVendor.rejected, (state) => {
+      .addCase(getVendor.rejected, (state,action) => {
         state.loading = false;
       });
   },

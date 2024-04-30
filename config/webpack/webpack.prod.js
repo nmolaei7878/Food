@@ -24,38 +24,26 @@ module.exports = merge(common, {
   ],
   optimization: {
     minimize: true,
+    usedExports: true,
     minimizer: [
       new CssMinimizerPlugin(),
-      new TerserPlugin({ parallel: 8, extractComments: true }),
+      new TerserPlugin({ parallel: 8, extractComments: true,sourceMap: true, compress: {
+        drop_console: true,
+        keep_fnames: true,
+      }, }),
     ],
     splitChunks: {
       chunks: "all",
-      minSize: 20000,
-      maxSize: 51200,
+      minSize: 51200,
+      maxSize: 100000,
       minChunks: 1,
       maxAsyncRequests: 6,
       maxInitialRequests: 4,
       automaticNameDelimiter: "~",
-      cacheGroups: {
-        defaultVendors: {
-          test: /[\\/]node_modules[\\/]/,
-          priority: -10,
-          reuseExistingChunk: true,
-        },
-        default: {
-          minChunks: 2,
-          priority: -20,
-          reuseExistingChunk: true,
-        },
-      },
-    },
-    runtimeChunk: {
-      name: "runtime",
-    },
   },
   performance: {
     hints: "warning",
     maxEntrypointSize: 512000,
     maxAssetSize: 512000,
-  },
+  }
 });

@@ -12,14 +12,14 @@ module.exports = merge(common, {
     publicPath: "/",
     clean: true,
   },
-  plugins: [
-    new InjectManifest({
-      swSrc: "./src/src-sw.js",
-      swDest: "sw.js",
-      mode: "development",
-      maximumFileSizeToCacheInBytes: 10000000,
-    }),
-  ],
+  // plugins: [
+  //   new InjectManifest({
+  //     swSrc: "./src/src-sw.js",
+  //     swDest: "sw.js",
+  //     mode: "development",
+  //     maximumFileSizeToCacheInBytes: 10000000,
+  //   }),
+  // ],
   devServer: {
     historyApiFallback: true,
     open: true,

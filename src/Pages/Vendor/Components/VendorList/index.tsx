@@ -48,8 +48,11 @@ const VendorList = () => {
     );
   };
 
-  return (
-    <VirtualList Tile={Row} dataLength={data.length} loadMore={loadMoreItems} />
+  return (<>
+  {
+
+  data?.length > 0 && <VirtualList Tile={Row} dataLength={data.length} loadMore={loadMoreItems} />
+}</>
   );
 };
 
