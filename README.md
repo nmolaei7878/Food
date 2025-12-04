@@ -23,7 +23,7 @@
 
 - The `PATHS` object contains paths to various directories within the application.
 
-# **Infinity Loading Virtial List**
+# **Infinity Loading Virtual List**
 
 - The VirtualList component is a reusable React component for rendering an `infinity-loading` virtual list. It efficiently renders a large list of items by only rendering the items that are currently visible on the screen. Additionally, it provides infinity loading functionality to fetch more items as the user scrolls down the list.
 
